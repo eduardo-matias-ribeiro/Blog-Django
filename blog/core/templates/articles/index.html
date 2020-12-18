@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Novo Artigo{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<header class="masthead" style="background-color: #323232; height: 70px;">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <h5 class="card-header">Publicar novo artigo!</h5>
+        {% bootstrap_messages%}
+        <div class="card-body">
+          <form action="{% url 'article' %}" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+              <button type="submit" class="btn btn-primary">Publicar</button>
+            {% endbuttons %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

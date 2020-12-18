@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<header class="masthead" style="background-color: #323232; height: 70px;">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card">
+        <h5 class="card-header">Entrar no Blog</h5>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                {{ form|crispy }}
+                <span style="font-size: 16px;">Ainda não possui conta?  <a href="/accounts/register">Registre-se agora!</a></span>
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 10px;">Entrar</button>
+            </form>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock %}

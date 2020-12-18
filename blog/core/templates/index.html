@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog Facet{% endblock %}
+
+{% block content %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('../static/img/facet.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Blog Facet</h1>
+            <span class="subheading">Fale conosco um pouco da sua experiencia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <a href="/articles/" class="btn btn-primary btn-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg>
+          Novo Artigo
+        </a>
+        {% for article in articles %}
+        <div class="post-preview">
+          <a href="/article/{{ article.id }}">
+            <h2 class="post-title">
+              {{ article.title }}
+            </h2>
+            <h3 class="post-subtitle" style="max-height: 160px; overflow: hidden;">
+              {{ article.body }}
+            </h3>
+          </a>
+          <p class="post-meta">Postado por
+            <a href="#" style="text-transform: uppercase;">{{ article.author }}</a>
+            em {{ article.created }}</p>
+        </div>
+        <hr>
+        {% endfor %}
+        <!-- Pager -->
+        <!--<div class="clearfix">
+          <a class="btn btn-primary float-right" href="#">Outros artigos &rarr;</a>
+        </div>-->
+      </div>
+    </div>
+  </div>
+
+  <hr>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block title %}Editar Artigo {{article.id}}{% endblock %}
+
+{% block content %}
+<header class="masthead" style="background-color: #323232; height: 70px;">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <h5 class="card-header">Editar artigo! {{ article.id }}</h5>
+        {% bootstrap_messages%}
+        <div class="card-body">
+          <form action="/article/edit/{{article.id}}/" method="post" class="form" autocomplete="off">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+              <button type="submit" class="btn btn-primary">Editar</button>
+            {% endbuttons %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
